@@ -17,11 +17,13 @@ app.use(express.json());
 // handle all routes
 const userRoutes = require('./routes/v1/user.route');
 const organizationRoutes = require('./routes/v1/organization.route');
-const packageRoutes = require('./routes/v1/package.router');
+const packageRoutes = require('./routes/v1/package.route');
+const orderRoutes = require('./routes/v1/order.route');
 
 app.use('/v1/user', userRoutes);
 app.use('/v1/organization', organizationRoutes);
 app.use('/v1/package', packageRoutes);
+app.use('/v1/order', orderRoutes);
 
 // initial the server
 app.get('/', (req, res) => {
