@@ -7,8 +7,8 @@
     "node":"18.x"
   },
   "scripts": {
-    "start": "node server",
-    "dev": "nodemon server"
+    "start": "node index",
+    "dev": "nodemon index"
   },
   "devDependencies": {
     "eslint": "8.2.0",
