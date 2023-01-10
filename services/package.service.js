@@ -47,6 +47,6 @@ exports.updateOnePackageService = async (id, data) => {
 
 // delete one package by id service
 exports.deletePackageService = async (id) => {
-    const package = await Package.delete({ _id: id });
+    const package = await Package.deleteOne({ _id: id });
     return package;
 };

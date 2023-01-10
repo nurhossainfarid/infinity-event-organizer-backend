@@ -7,8 +7,7 @@ const router = express.Router();
 // module scaffolding
 router.route('/').post(packageController.createPackage).get(packageController.getAllPackage);
 
-router
-    .route('/:id')
+router.route('/:id')
     .get(packageController.getOnePackage)
     .put(packageController.updatePackage)
     .delete(packageController.deletePackage);
