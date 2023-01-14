@@ -15,6 +15,7 @@ router.route('/')
     .post(userController.signup)
     .get(userController.getAllUser);
 router.route('/:id')
+    .get(userController.getAUser)
     .patch(userController.updateUser)
     .delete(userController.deleteUser);
 

@@ -19,6 +19,12 @@ exports.getAllUserService = async () => {
     return users;
 };
 
+// get one user service
+exports.getAUserService = async (userId) => {
+    const user = await User.findById({ _id: userId });
+    return user;
+};
+
 // update user
 exports.updateUserService = async (userId, data) => {
     const user = await User.updateOne({ _id: userId }, data);

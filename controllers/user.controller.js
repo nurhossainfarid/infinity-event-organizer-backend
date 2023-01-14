@@ -5,7 +5,7 @@
  */
 
 // Dependencies
-const { signupService, getAllUserService, updateUserService, deleteUserService } = require('../services/user.service');
+const { signupService, getAllUserService, updateUserService, deleteUserService, getAUserService } = require('../services/user.service');
 
 // signup controller for user
 exports.signup = async (req, res) => {
@@ -37,6 +37,29 @@ exports.getAllUser = async (req, res) => {
             return res.status(400).json({
                 status: 'Failed',
                 error: 'Failed get User',
+            });
+        }
+        res.status(200).json({
+            status: 'Success',
+            data: result,
+        });
+    } catch (error) {
+        res.status(400).json({
+            status: 'Failed',
+            error: error.message,
+        });
+    }
+};
+
+// controller for get A user
+exports.getAUser = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const result = await getAUserService(id);
+        if (!result) {
+            return res.status(400).json({
+                status: 'Failed',
+                error: 'Failed get A User',
             });
         }
         res.status(200).json({

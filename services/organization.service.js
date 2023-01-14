@@ -37,6 +37,6 @@ exports.updateOneOrganizationService = async (id, data) => {
 
 // delete one organization by id service
 exports.deleteOrganizationService = async (id) => {
-    const organization = await Organization.delete({ _id: id });
+    const organization = await Organization.deleteOne({ _id: id });
     return organization;
 };
