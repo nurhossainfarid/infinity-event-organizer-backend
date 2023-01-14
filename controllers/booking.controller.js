@@ -1,70 +1,70 @@
 // dependence
 
 const {
-    orderAPackageService,
-    getAllOrderService,
-    getOneOrderService,
-    updateAOrderService,
-    deleteAOrderService,
     checkById,
-} = require('../services/order.service');
+    bookingAPackageService,
+    getAllBookingService,
+    getOneBookingService,
+    updateABookingService,
+    deleteABookingService,
+} = require('../services/booking.service');
 
-// order a package
-exports.orderAPackage = async (req, res) => {
+// booking a package
+exports.bookingAPackage = async (req, res) => {
     try {
-        const order = await orderAPackageService(req.body);
-        // check validation
-        if (!order) {
-            return res.status(400).json({
-                status: 'Failed',
-                error: 'Failed to order a package',
-            });
-        }
-        res.status(200).json({
-            status: 'Success',
-            message: 'Package order was successfully',
-            data: order,
-        });
-    } catch (error) {
-        res.status(404).json({
-            status: 'Failed',
-            message: 'Package could not order successfully',
-            error: error.message,
-        });
-    }
-};
-
-// handle all ordered package
-exports.getAllOrder = async (req, res) => {
-    try {
-        const result = await getAllOrderService();
+        const result = await bookingAPackageService(req.body);
         // check validation
         if (!result) {
             return res.status(400).json({
                 status: 'Failed',
-                error: 'Failed to get all order',
+                error: 'Failed to booking a package',
             });
         }
         res.status(200).json({
             status: 'Success',
-            message: 'Get all order was successfully',
+            message: 'Package booking was successfully',
             data: result,
         });
     } catch (error) {
         res.status(404).json({
             status: 'Failed',
-            message: 'Get all order service failed',
+            message: 'Package could not booking successfully',
             error: error.message,
         });
     }
 };
 
-// handle get one order
-exports.getOneOrder = async (req, res) => {
+// handle all booking package
+exports.getAllBookingPackage = async (req, res) => {
+    try {
+        const result = await getAllBookingService();
+        // check validation
+        if (!result) {
+            return res.status(400).json({
+                status: 'Failed',
+                error: 'Failed to get all booking',
+            });
+        }
+        res.status(200).json({
+            status: 'Success',
+            message: 'Get all booking was successfully',
+            data: result,
+        });
+    } catch (error) {
+        res.status(404).json({
+            status: 'Failed',
+            message: 'Get all booking service failed',
+            error: error.message,
+        });
+    }
+};
+
+// handle get one booking
+exports.getOneBookingPackage = async (req, res) => {
     const { id } = req.params;
     try {
         const isIdValid = await checkById(id);
-        const result = await getOneOrderService(id);
+        const result = await getOneBookingService(id);
         // check validation
         if (!isIdValid) {
             res.status(400).json({
@@ -74,29 +74,29 @@ exports.getOneOrder = async (req, res) => {
         } else if (!result) {
             return res.status(400).json({
                 status: 'Failed',
-                error: 'Failed to get one order',
+                error: 'Failed to get one booking',
             });
         }
         res.status(200).json({
             status: 'Success',
-            message: 'Get one order was successfully',
+            message: 'Get one booking was successfully',
             data: result,
         });
     } catch (error) {
         res.status(404).json({
             status: 'Failed',
-            message: 'Get one order service failed',
+            message: 'Get one booking service failed',
             error: error.message,
         });
     }
 };
 
-// handle update a order
-exports.updateAOrder = async (req, res) => {
+// handle update a booking
+exports.updateABookingPackage = async (req, res) => {
     const { id } = req.params;
     try {
         const isIdValid = await checkById(id);
-        const result = await updateAOrderService(id, req.body);
+        const result = await updateABookingService(id, req.body);
         // check validation
         if (!isIdValid) {
             res.status(400).json({
@@ -106,29 +106,29 @@ exports.updateAOrder = async (req, res) => {
         } else if (!result) {
             return res.status(400).json({
                 status: 'Failed',
-                error: 'Failed to update a order',
+                error: 'Failed to update a booking',
             });
         }
         res.status(200).json({
             status: 'Success',
-            message: 'Update a order was successfully',
+            message: 'Update a booking was successfully',
             data: result,
         });
     } catch (error) {
         res.status(404).json({
             status: 'Failed',
-            message: 'Update a order service failed',
+            message: 'Update a booking service failed',
             error: error.message,
         });
     }
 };
 
-// handle delete a order
-exports.deleteAOrder = async (req, res) => {
+// handle delete a booking
+exports.deleteABookingPackage = async (req, res) => {
     const { id } = req.params;
     try {
         const isIdValid = await checkById(id);
-        const result = await deleteAOrderService(id);
+        const result = await deleteABookingService(id);
         // check validation
         if (!isIdValid) {
             res.status(400).json({
@@ -138,18 +138,18 @@ exports.deleteAOrder = async (req, res) => {
         } else if (!result) {
             return res.status(400).json({
                 status: 'Failed',
-                error: 'Failed to delete a order',
+                error: 'Failed to delete a booking',
             });
         }
         res.status(200).json({
             status: 'Success',
-            message: 'Delete a order was successfully',
+            message: 'Delete a booking was successfully',
             data: result,
         });
     } catch (error) {
         res.status(404).json({
             status: 'Failed',
-            message: 'Delete a order service failed',
+            message: 'Delete a booking service failed',
             error: error.message,
         });
     }
