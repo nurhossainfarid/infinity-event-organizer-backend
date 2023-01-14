@@ -35,6 +35,10 @@ const orderSchema = mongoose.Schema({
         required: [true, 'Package is required'],
         unique: true,
     },
+    packagePrice: {
+        type: Number,
+        required: [true, 'Package price is required'],
+    },
     organizerName: {
         type: String,
         required: [true, 'Organization name is required'],
