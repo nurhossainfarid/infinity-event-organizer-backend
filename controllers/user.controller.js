@@ -5,7 +5,7 @@
  */
 
 // Dependencies
-const { signupService, getAllUserService, updateUserService, deleteUserService, getAUserService } = require('../services/user.service');
+const { signupService, getAllUserService, updateUserService, deleteUserService, getAUserService, findByEmailService } = require('../services/user.service');
 
 // signup controller for user
 exports.signup = async (req, res) => {
@@ -119,3 +119,28 @@ exports.deleteUser = async (req, res) => {
         });
     }
 };
+
+// control for find by email
+exports.findByEmail = async (req, res) => {
+    const { email } = req.params;
+    console.log(email);
+    try {
+        const result = await findByEmailService(email);
+        if (!result) {
+            return res.status(400).json({
+                status: 'Failed',
+                error: 'Failed find user by email',
+            });
+        }
+        res.status(200).json({
+            status: 'Success',
+            data: result,
+        });
+    } catch (error) {
+        res.status(400).json({
+            status: 'Failed',
+            message: 'Failed find user by email',
+            error: error.message,
+        });
+    }
+}
