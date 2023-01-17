@@ -23,7 +23,7 @@ exports.getAllOrganizationService = async () => {
 
 // get one organization service
 exports.getOneOrganizationService = async (id) => {
-    const organization = await Organization.findById({ _id: id });
+    const organization = await Organization.findById({ _id: id }).populate('packages');
     return organization;
 };
 
