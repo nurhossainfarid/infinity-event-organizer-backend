@@ -14,12 +14,12 @@ exports.createPackageService = async (data) => {
     const result = await Package.create(data);
     
     // take page id and name
-    const { _id: id, organization } = result;
+    const { _id: packageId, organization} = result;
 
     // update organization package object
     const res = await Organization.updateOne(
-        { _id: organization._id }, 
-        {$push: {packages: id}},
+        { _id: organization.id }, 
+        {$push: {packages: packageId}},
     )
     console.log(res.nModified);
     return result;
