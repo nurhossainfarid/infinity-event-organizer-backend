@@ -27,6 +27,12 @@ exports.getOneOrganizationService = async (id) => {
     return organization;
 };
 
+// find by email
+exports.findOrganizerByEmailService = async (email) => {
+    const org = await Organization.findOne({ email: email }).populate('packages');
+    return org;
+};
+
 // update organization by id service
 exports.updateOneOrganizationService = async (id, data) => {
     const organization = await Organization.updateOne({ _id: id }, data);

@@ -39,7 +39,6 @@ exports.deleteUserService = async (userId) => {
 
 // find by email
 exports.findByEmailService = async (email) => {
-    console.log(email);
     const user = await User.findOne({ email: email });
     return user;
 };

@@ -123,7 +123,6 @@ exports.deleteUser = async (req, res) => {
 // control for find by email
 exports.findByEmail = async (req, res) => {
     const { email } = req.params;
-    console.log(email);
     try {
         const result = await findByEmailService(email);
         if (!result) {
