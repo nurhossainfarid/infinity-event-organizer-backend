@@ -9,6 +9,7 @@ const packageSchema = mongoose.Schema({
         name: {
             type: String,
             required: [true, 'Organization name is required'],
+            lowercase: true,
         },
         id: {
             type: ObjectId,
@@ -20,6 +21,7 @@ const packageSchema = mongoose.Schema({
         type: String,
         required: [true, 'Package is required'],
         unique: true,
+        lowercase: true,
     },
     price: {
         type: Number,

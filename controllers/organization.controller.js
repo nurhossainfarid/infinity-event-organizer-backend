@@ -8,6 +8,7 @@ const {
     checkById,
     deleteOrganizationService,
     findOrganizerByEmailService,
+    findOrganizerByNameService,
 } = require('../services/organization.service');
 
 // control services
@@ -102,6 +103,29 @@ exports.findOrganizerByEmail = async (req, res) => {
             return res.status(400).json({
                 status: 'Failed',
                 error: 'Failed find Organizer by email',
+            });
+        }
+        res.status(200).json({
+            status: 'Success',
+            data: result,
+        });
+    } catch (error) {
+        res.status(400).json({
+            status: 'Failed',
+            message: 'Organization could not get successfully',
+            error: error.message,
+        });
+    }
+};
+// handle find organizer by name
+exports.findOrganizerByName = async (req, res) => {
+    const { name } = req.params;
+    try {
+        const result = await findOrganizerByNameService(name);
+        if (!result) {
+            return res.status(400).json({
+                status: 'Failed',
+                error: 'Failed find Organizer by name',
             });
         }
         res.status(200).json({

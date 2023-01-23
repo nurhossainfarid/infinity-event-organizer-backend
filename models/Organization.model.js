@@ -10,6 +10,7 @@ const organizationSchema = mongoose.Schema({
         type: String,
         required: [true, 'Organization name is required'],
         minLength: [3, 'Minimum organization name length are 3 characters'],
+        lowercase: true,
     },
     contactNumber: {
         type: String,

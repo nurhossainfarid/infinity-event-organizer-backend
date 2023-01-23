@@ -34,6 +34,7 @@ const orderSchema = mongoose.Schema({
         type: String,
         required: [true, 'Package is required'],
         unique: true,
+        lowercase: true,
     },
     packagePrice: {
         type: Number,
@@ -43,6 +44,7 @@ const orderSchema = mongoose.Schema({
         type: String,
         required: [true, 'Organization name is required'],
         minLength: [3, 'Minimum organization name length are 3 characters'],
+        lowercase: true,
     },
     organizerAddress: {
         type: String,
