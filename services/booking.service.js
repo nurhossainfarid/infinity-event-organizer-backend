@@ -25,6 +25,11 @@ exports.getOneBookingService = async (bookingId) => {
     return result;
 };
 
+// find booking package by organizer name
+exports.findBookingByOrganizerService = async (orgName) => {
+    const result = await Booking.find({ organizerName: orgName });
+    return result;
+};
 // update a booking by Id
 exports.updateABookingService = async (bookingId, data) => {
     const uResult = await Booking.updateOne({ _id: bookingId }, data);

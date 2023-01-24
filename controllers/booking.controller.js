@@ -7,6 +7,7 @@ const {
     getOneBookingService,
     updateABookingService,
     deleteABookingService,
+    findBookingByOrganizerService,
 } = require('../services/booking.service');
 
 // booking a package
@@ -86,6 +87,32 @@ exports.getOneBookingPackage = async (req, res) => {
         res.status(404).json({
             status: 'Failed',
             message: 'Get one booking service failed',
+            error: error.message,
+        });
+    }
+};
+
+// handle find booking by organizer name
+exports.findBookingByOrganizer = async (req, res) => {
+    const { organizerName } = req.params;
+    try {
+        const result = await findBookingByOrganizerService(organizerName);
+        // check validation
+        if (!result) {
+            return res.status(400).json({
+                status: 'Failed',
+                error: 'Failed to find booking by organizer name',
+            });
+        }
+        res.status(200).json({
+            status: 'Success',
+            message: 'Find booking by organizer name was successfully',
+            data: result,
+        });
+    } catch (error) {
+        res.status(404).json({
+            status: 'Failed',
+            message: 'Find booking by organizer name was failed',
             error: error.message,
         });
     }
