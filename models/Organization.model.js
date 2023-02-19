@@ -16,8 +16,6 @@ const organizationSchema = mongoose.Schema({
     contactNumber: {
         type: String,
         required: [true, 'Contact number is required'],
-        minLength: [11, 'Only allow bangladeshi number'],
-        maxLength: [11, 'Only allow bangladeshi number'],
         unique: true,
         validate: [
             validator.isMobilePhone,
@@ -56,7 +54,6 @@ const organizationSchema = mongoose.Schema({
     },
     image: {
         type: String,
-        required: [true, 'Image is required'],
         validate: [validator.isURL, 'Please provide your valid URL'],
     },
     status: {
