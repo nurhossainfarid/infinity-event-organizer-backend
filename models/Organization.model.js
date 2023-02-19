@@ -32,6 +32,22 @@ const organizationSchema = mongoose.Schema({
         unique: true,
         validate: [validator.isEmail, 'Provide your valid email'],
     },
+    website: {
+        type: String,
+        unique: true,
+    },
+    facebook: {
+        type: String,
+        unique: true,
+    },
+    Instagram: {
+        type: String,
+        unique: true,
+    },
+    Whatsapp: {
+        type: String,
+        unique: true,
+    },
     address: {
         type: String,
         trim: true,
