@@ -54,7 +54,6 @@ const organizationSchema = mongoose.Schema({
     },
     image: {
         type: String,
-        validate: [validator.isURL, 'Please provide your valid URL'],
     },
     status: {
         type: String,
