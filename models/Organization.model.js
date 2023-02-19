@@ -40,11 +40,11 @@ const organizationSchema = mongoose.Schema({
         type: String,
         unique: true,
     },
-    Instagram: {
+    instagram: {
         type: String,
         unique: true,
     },
-    Whatsapp: {
+    whatsapp: {
         type: String,
         unique: true,
     },
