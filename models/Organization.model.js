@@ -26,7 +26,6 @@ const organizationSchema = mongoose.Schema({
         type: String,
         required: [true, 'Email address is required'],
         trim: true,
-        lowercase: true,
         unique: true,
         validate: [validator.isEmail, 'Provide your valid email'],
     },
