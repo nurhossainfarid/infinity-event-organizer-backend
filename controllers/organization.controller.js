@@ -40,7 +40,15 @@ exports.createOrganization = async (req, res) => {
 // handle get all organizations
 exports.getAllOrganization = async (req, res) => {
     try {
-        const result = await getAllOrganizationService();
+        const queries = {};
+        // pagination
+        if (req.query.page) {
+            const { page = 0, limit = 10 } = req.query;
+            const skip = (page - 1) * parseInt(limit);
+            queries.skip = skip;
+            queries.limit = limit;
+        }
+        const result = await getAllOrganizationService(queries);
         // check validation
         if (!result) {
             return res.status(400).json({

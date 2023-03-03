@@ -16,8 +16,11 @@ exports.createOrganizationService = async (data) => {
 };
 
 // get all organization service
-exports.getAllOrganizationService = async () => {
-    const organizations = await Organization.find({}).populate('packages');
+exports.getAllOrganizationService = async (queries) => {
+    const organizations = await Organization.find({})
+        .skip(queries.skip)
+        .limit(queries.limit)
+        .populate('packages');
     return organizations;
 };
 
