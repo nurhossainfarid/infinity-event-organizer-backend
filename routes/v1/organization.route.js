@@ -9,6 +9,7 @@ router
     .route('/')
     .post(organizationController.createOrganization)
     .get(organizationController.getAllOrganization);
+router.route('/count').get(organizationController.getCountOrganizer);
 router.route('/email/:email').get(organizationController.findOrganizerByEmail);
 router.route('/name/:name').get(organizationController.findOrganizerByName);
 router

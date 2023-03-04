@@ -24,6 +24,14 @@ exports.getAllOrganizationService = async (queries) => {
     return organizations;
 };
 
+// product count
+exports.getCountOrganizerService = async () => {
+    const query = {};
+    const cursor = Organization.find(query);
+    const count = await cursor.count();
+    return count;
+};
+
 // get one organization service
 exports.getOneOrganizationService = async (id) => {
     const organization = await Organization.findById({ _id: id }).populate('packages');

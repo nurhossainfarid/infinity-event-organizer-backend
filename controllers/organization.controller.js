@@ -9,6 +9,7 @@ const {
     deleteOrganizationService,
     findOrganizerByEmailService,
     findOrganizerByNameService,
+    getCountOrganizerService,
 } = require('../services/organization.service');
 
 // control services
@@ -43,7 +44,7 @@ exports.getAllOrganization = async (req, res) => {
         const queries = {};
         // pagination
         if (req.query.page) {
-            const { page = 0, limit = 10 } = req.query;
+            const { page = 1, limit = 10 } = req.query;
             const skip = (page - 1) * parseInt(limit);
             queries.skip = skip;
             queries.limit = limit;
@@ -69,6 +70,31 @@ exports.getAllOrganization = async (req, res) => {
         });
     }
 };
+
+// count organizer
+exports.getCountOrganizer = async (req, res) => {
+    try {
+        const result = await getCountOrganizerService();
+        // check validation
+        if (!result) {
+            return res.status(400).json({
+                status: 'Failed',
+                error: 'Failed to count organization',
+            });
+        }
+        res.status(200).json({
+            status: 'Success',
+            message: 'Organizer count successfully',
+            data: result,
+        });
+    } catch (error) {
+        res.status(400).json({
+            status: 'Failed',
+            message: 'Organizer count failed',
+            error: error.message,
+        });
+    }
+}
 
 // handle get one organizations
 exports.getOneOrganization = async (req, res) => {
