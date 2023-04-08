@@ -5,11 +5,11 @@ const organizationController = require('../../controllers/organization.controlle
 const router = express.Router();
 
 // module scaffolding
-router.route('/count/c').get(organizationController.getCountOrganizer);
 router
     .route('/')
     .post(organizationController.createOrganization)
     .get(organizationController.getAllOrganization);
+router.route('/count').get(organizationController.getCountOrganizer);
 router.route('/email/:email').get(organizationController.findOrganizerByEmail);
 router.route('/name/:name').get(organizationController.findOrganizerByName);
 router

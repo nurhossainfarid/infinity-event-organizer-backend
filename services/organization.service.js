@@ -26,8 +26,7 @@ exports.getAllOrganizationService = async (queries) => {
 
 // product count
 exports.getCountOrganizerService = async () => {
-    const query = {};
-    const cursor = Organization.find(query);
+    const cursor = Organization.find({});
     const count = await cursor.count();
     return count;
 };
