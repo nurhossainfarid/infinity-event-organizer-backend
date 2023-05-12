@@ -8,6 +8,7 @@ const {
     updateABookingService,
     deleteABookingService,
     findBookingByOrganizerService,
+    findBookingByEmailService,
 } = require('../services/booking.service');
 
 // booking a package
@@ -87,6 +88,31 @@ exports.getOneBookingPackage = async (req, res) => {
         res.status(404).json({
             status: 'Failed',
             message: 'Get one booking service failed',
+            error: error.message,
+        });
+    }
+};
+
+// find booking package by email
+exports.findBookingPackageByEmail = async (req, res) => {
+    const { email } = req.params;
+    try {
+        const result = await findBookingByEmailService(email);
+        if (!result) {
+            return res.status(404).json({
+                status: 'Failed',
+                message: 'Failed to find booking by email',
+            });
+        }
+        res.status(200).json({
+            status: 'Success',
+            message: 'Successfully find booking by email',
+            data: result,
+        });
+    } catch (error) {
+        res.status(404).json({
+            status: 'Failed',
+            message: 'Could not Find booking package by email',
             error: error.message,
         });
     }

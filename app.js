@@ -19,11 +19,15 @@ const userRoutes = require('./routes/v1/user.route');
 const organizationRoutes = require('./routes/v1/organization.route');
 const packageRoutes = require('./routes/v1/package.route');
 const bookingRoutes = require('./routes/v1/booking.route');
+const customBookingRoutes = require('./routes/v1/customBooking.route');
+const feedbackRoutes = require('./routes/v1/feedback.route');
 
 app.use('/v1/user', userRoutes);
 app.use('/v1/organization', organizationRoutes);
 app.use('/v1/package', packageRoutes);
 app.use('/v1/booking', bookingRoutes);
+app.use('/v1/customBooking', customBookingRoutes);
+app.use('/v1/feedback', feedbackRoutes);
 
 // initial the server
 app.get('/', (req, res) => {

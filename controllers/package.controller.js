@@ -38,7 +38,8 @@ exports.createPackage = async (req, res) => {
 // handle get all packages
 exports.getAllPackage = async (req, res) => {
     try {
-        const result = await getAllPackageService();
+        
+        const result = await getAllPackageService(req.query);
         // check validation
         if (!result) {
             return res.status(400).json({

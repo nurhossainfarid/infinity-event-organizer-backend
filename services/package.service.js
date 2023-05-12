@@ -26,7 +26,9 @@ exports.createPackageService = async (data) => {
 };
 
 // get all package service
-exports.getAllPackageService = async () => {
+exports.getAllPackageService = async (query) => {
+    // const { price } = query;
+    // console.log(price);
     const packages = await Package.find({});
     return packages;
 };

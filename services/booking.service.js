@@ -15,13 +15,19 @@ exports.bookingAPackageService = async (data) => {
 
 // get All booking
 exports.getAllBookingService = async () => {
-    const results = await Booking.find();
+    const results = await Booking.find({});
     return results;
 };
 
 // get One booking by Id
 exports.getOneBookingService = async (bookingId) => {
     const result = await Booking.findOne({ _id: bookingId });
+    return result;
+};
+
+// find booking package by email
+exports.findBookingByEmailService = async (email) => {
+    const result = await Booking.find({customerEmail: email});
     return result;
 };
 

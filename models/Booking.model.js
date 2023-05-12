@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 
 // schema design
-const orderSchema = mongoose.Schema({
+const bookingSchema = mongoose.Schema({
     customerName: {
         type: String,
         trim: true,
@@ -33,7 +33,6 @@ const orderSchema = mongoose.Schema({
     packageName: {
         type: String,
         required: [true, 'Package is required'],
-        unique: true,
         lowercase: true,
     },
     packagePrice: {
@@ -46,14 +45,18 @@ const orderSchema = mongoose.Schema({
         minLength: [3, 'Minimum organization name length are 3 characters'],
         lowercase: true,
     },
-    organizerAddress: {
+    date: {
         type: String,
+        required: [true, 'Date is required'],
         trim: true,
-        required: [true, 'Address is required'],
-        lowercase: true,
+    },
+    time: {
+        type: String,
+        required: [true, 'Time is required'],
+        trim: true,
     },
 });
 
 // exports
-const Order = mongoose.model('Order', orderSchema);
-module.exports = Order;
+const Booking = mongoose.model('Booking', bookingSchema);
+module.exports = Booking;

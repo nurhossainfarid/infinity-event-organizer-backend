@@ -14,6 +14,7 @@ router
     .get(bookingController.getOneBookingPackage)
     .put(bookingController.updateABookingPackage)
     .delete(bookingController.deleteABookingPackage);
+router.route('/email/:email').get(bookingController.findBookingPackageByEmail);
 router.route('/organizerName/:organizerName').get(bookingController.findBookingByOrganizer);
 
 // exports

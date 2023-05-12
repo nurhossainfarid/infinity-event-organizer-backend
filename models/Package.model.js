@@ -48,7 +48,15 @@ const packageSchema = mongoose.Schema({
         type: String,
         required: [true, 'Event name is required'],
         enum: {
-            values: ['wedding', 'birthday', 'private party'],
+            values: [
+                'wedding',
+                'birthday',
+                'private party',
+                'anniversaries',
+                'holiday party',
+                'corporate party',
+                'concert',
+            ],
             message: "status can't be {VALUE}",
         },
     },
